@@ -33,10 +33,11 @@ function Chat({ socket, roomID, username }) {
           <div className="messageTextsContainer">
             {chatLog.map((messageContent) => {
               return (
-                <div className="messageText">
-                  <p>
-                    {messageContent.author} : {messageContent.message}
-                  </p>
+                <div className="messageBox">
+                  <div className="message-author">
+                    {messageContent.author} :
+                  </div>
+                  <div className="message-text">{messageContent.message}</div>
                 </div>
               )
             })}

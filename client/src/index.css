@@ -77,7 +77,20 @@ code {
   flex-direction: column;
 }
 
-.message-text {
+.messageBox {
   display: flex;
   flex-direction: row;
+  color: aliceblue;
+  padding: 0.5rem;
+  background-color: green;
+  border-radius: 0.3rem;
+}
+
+.message-author {
+  color: blue;
+  font-weight: bolder;
+}
+
+.message-text {
+  margin-left: 0.25rem;
 }
