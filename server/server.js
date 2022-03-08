@@ -30,7 +30,7 @@ io.on("connection", (socket) =>{
     })
 
     socket.on("sent_message", (data) => {
-        console.log(data)
+        socket.to(data.room).emit("received_message",data)
     })
 
     socket.on("disconnect", () => {

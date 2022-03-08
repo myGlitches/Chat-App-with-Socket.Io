@@ -13,5 +13,71 @@ code {
 }
 
 .App {
-  text-align: center;
+  place-items: center;
+}
+
+.join-dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-dashboard input {
+  margin-top: 1rem;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px black;
+}
+
+.join-dashboard input:hover {
+  cursor: text;
+}
+
+.join-dashboard button {
+  margin-top: 1rem;
+  background-color: bisque;
+  appearance: none;
+  border: none;
+  width: 200px;
+  height: 30px;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.join-dashboard button:hover {
+  background-color: brown;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.chat-border {
+  display: flex;
+  padding: 1rem;
+  height: 400px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  box-shadow: 0 0 20px black;
+}
+
+.messageTextsContainer {
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+}
+
+.message-text {
+  display: flex;
+  flex-direction: row;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FaArrowAltCircleRight as Send } from "react-icons/fa"
 
 function Chat({ socket, roomID, username }) {
@@ -13,23 +13,47 @@ function Chat({ socket, roomID, username }) {
         room: roomID,
       }
       await socket.emit("sent_message", messageData)
+      setChatLog((chat) => [...chat, messageData])
     }
   }
 
+  useEffect(() => {
+    socket.on("received_message", (data) => {
+      setChatLog((chat) => [...chat, data])
+    })
+  }, [socket])
+
   return (
-    <div>
-      <div className="chatbox-header">Mumbles</div>
-      <div className="chatbox-body"></div>
-      <div className="chatbox-footer">
-        <input
-          type="text"
-          name="message"
-          placeholder="Type Here..."
-          onChange={(e) => setTypedText(e.target.value)}
-        />
-        <button onClick={sendMessage}>
-          <Send />
-        </button>
+    <div className="chat-board">
+      <div className="chat-border">
+        <div>
+          <div className="chatbox-header">Mumbles</div>
+        </div>
+        <div className="chatbox-body">
+          <div className="messageTextsContainer">
+            {chatLog.map((messageContent) => {
+              return (
+                <div className="messageText">
+                  <p>
+                    {messageContent.author} : {messageContent.message}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="chatbox-footer">
+          <input
+            type="text"
+            name="message"
+            placeholder="Type Here..."
+            onChange={(e) => setTypedText(e.target.value)}
+          />
+          <button onClick={sendMessage}>
+            <Send />
+          </button>
+        </div>
       </div>
     </div>
   )
